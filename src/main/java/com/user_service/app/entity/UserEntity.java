@@ -70,7 +70,7 @@ public class UserEntity {
         this.createdAt = LocalDateTime.now();
     }
 
-    UserResponse toResponse(){
+    public UserResponse toResponse(){
         return new UserResponse(this.id,this.name,this.email,this.age,this.createdAt);
     }
 
