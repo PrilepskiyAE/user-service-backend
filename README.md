@@ -31,4 +31,4 @@
 - обновление данных пользователя
 - удаление пользователя
 
-
+![Image alt](https://github.com/PrilepskiyAE/user-service-backend/blob/main/screen/screen1.png)

@@ -5,13 +5,17 @@ import com.user_service.app.dto.user.UserResponse;
 import com.user_service.app.entity.UserEntity;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.web.server.LocalServerPort;
+
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
 public abstract class BaseTest {
     protected  final Long USER_ID = 1L;
+    protected  final Integer USER_ID_INT = 1;
     protected  final Long SECOND_USER_ID = 2L;
+    protected  final Integer SECOND_USER_ID_INT = 2;
     protected  final Long NOT_FOUND_USER_ID = 999L;
 
     protected  final String USER_NAME = "Alex";
@@ -30,6 +34,10 @@ public abstract class BaseTest {
     protected final int OLD_AGE = 20;
     protected final int SECOND_USER_AGE = 30;
 
+    protected final LocalDateTime CREATED_AT = LocalDateTime.of(2026, 1, 1, 12, 0);
+    protected final LocalDateTime SECOND_CREATED_AT = LocalDateTime.of(2026, 1, 2, 12, 0);
+
+    protected final String BASE_URL = "/api/users";
 
     protected UserEntity createUserEntity(
             Long id,
