@@ -8,15 +8,19 @@ import com.user_service.app.exception.UserNotFoundException;
 import com.user_service.app.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     @Override
+    @Transactional
     public UserResponse createUser(UserRequest user) {
 
         if (userRepository.existsByEmail(user.getEmail())) {
@@ -46,6 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserResponse updateUser(Long id, UserRequest request) {
         UserEntity entity = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
@@ -66,6 +71,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void deleteUserById(Long id) {
         UserEntity entity = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));

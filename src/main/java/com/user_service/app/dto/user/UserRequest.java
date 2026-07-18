@@ -7,6 +7,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import static com.user_service.app.util.ValidationConstants.MAX_AGE_LEN;
+import static com.user_service.app.util.ValidationConstants.MIN_AGE_LEN;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,8 +38,8 @@ public class UserRequest {
             requiredMode = Schema.RequiredMode.REQUIRED
     )
     @NotNull(message = "Возраст обязателен")
-    @Min(value = 0, message = "Возраст не может быть отрицательным")
-    @Max(value = 100, message = "Возраст не может быть больше 100")
+    @Min(value = MIN_AGE_LEN , message = "Возраст не может быть отрицательным")
+    @Max(value = MAX_AGE_LEN, message = "Возраст не может быть больше 100")
     private Integer age;
 
     public UserEntity toEntity() {
